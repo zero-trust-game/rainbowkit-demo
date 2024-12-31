@@ -4,11 +4,15 @@ import {
   getProvider as getOkxConnectProvider,
   SupportedNetworks,
 } from "sher-dapp-connect";
+import { isMobile } from "../utils/platform";
 
 let okxConnect = null;
 
+
 export const setup = async () => {
-    okxConnect = await init();
+    okxConnect = await init({
+      useMini: !isMobile,
+    });
     // okxConnect = await init({
     //     canInjectProxies: false,
     // });
